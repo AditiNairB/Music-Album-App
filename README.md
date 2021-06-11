@@ -1,5 +1,5 @@
 # Music-Album-App
-App used to display iTunes Top 25 Albums. On selecting an album from the list, more details about the album is show. Stream Now options redirects you to official iTunes website to start grooving!
+App used to display iTunes Top 25 Albums. On selecting an album from the list, more details about the album is show. Stream Now option redirects you to official iTunes website to start grooving!
 
 ### Built with
 * Android Studio
