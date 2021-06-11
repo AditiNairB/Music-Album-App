@@ -1,5 +1,5 @@
 # Music-Album-App
-iTunes Top 25 Albums displayed in a recyclerview. On selecting an album, its details will be shown as a new activity.
+App used to display iTunes Top 25 Albums. On selecting an album from the list, more details about the album is show. Stream Now options redirects you to official iTunes website to start grooving!
 
 ### Built with
 * Android Studio
