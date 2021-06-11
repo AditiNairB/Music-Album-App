@@ -3,7 +3,9 @@ package com.example.musicapp
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.musicapp.activities.main.MainActivity
 import com.example.musicapp.databinding.AlbumItemBinding
 import com.squareup.picasso.Picasso
 
@@ -28,6 +30,7 @@ class RecyclerViewAdapter(val albumList: ArrayList<AlbumListItem>, var clickList
 
         holder.binding.toggleButton.setOnClickListener{
             if(albumList[position].favourite == 0){
+                Toast.makeText(holder.binding.root.context, "Added to favorites", Toast.LENGTH_SHORT).show()
                 albumList[position].favourite = 1
             }else{
                 albumList[position].favourite = 0
