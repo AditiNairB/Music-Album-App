@@ -19,6 +19,7 @@ class AlbumDetailsActivity : AppCompatActivity() {
         binding = ActivityAlbumDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Set album details to new activity
         val albumDet:AlbumListItem = intent.getSerializableExtra("det") as AlbumListItem
         binding.albumNameDet.text = albumDet.name
         binding.artistNameDet.text = albumDet.artistName
@@ -29,5 +30,16 @@ class AlbumDetailsActivity : AppCompatActivity() {
         }
         Picasso.get().load(albumDet.artworkUrl100).into(binding.albumArtDet)
 
+        //set back button functionality
+        val actionBar = supportActionBar
+        actionBar!!.title = "Album Details"
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        finish()
+        return true
     }
 }

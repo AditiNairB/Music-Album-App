@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Music App</string>
+    <string name="stream_now_here">Stream Now Here</string>
+    <string name="album_art">Album Art</string>
+    <string name="album_name">Album Name</string>
+    <string name="explicitLogo">Explicit Logo</string>
 </resources>
