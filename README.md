@@ -12,11 +12,11 @@ iTunes Top 25 Albums displayed in a recyclerview. On selecting an album, its det
 * Cardholder
 
 ### Features
-* Explicit logo will be shown, is song is explicit
-* Stream Now option used to stream all songs of album in iTunes official website
-* ProgressBar while loading data 
+* Explicit logo will shown dynamically based on album details
+* Stream Now button lets one stream all songs of album in iTunes official website
 * Interactive UI
-* Internet connectivity check
+* ProgressBar to show delay while loading data 
+* Internet connectivity check before fetching data
 
 ### Author
 Aditi Nair Balachandran
