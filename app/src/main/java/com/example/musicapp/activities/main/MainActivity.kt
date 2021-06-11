@@ -1,4 +1,4 @@
-package com.example.musicapp
+package com.example.musicapp.activities.main
 
 import android.content.Context
 import android.content.Intent
@@ -12,7 +12,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.musicapp.*
+import com.example.musicapp.activities.details.AlbumDetailsActivity
 import com.example.musicapp.databinding.ActivityMainBinding
+import com.example.musicapp.helpers.BASE_URL
+import com.example.musicapp.helpers.RetrofitInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -65,9 +69,10 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                 val response = api.getAlbumDetails()
 
                 if(null != response){
+                    Log.d("MAIN", "${response.feed.results.size}")
                     for(i in response.feed.results.indices){
                         var feed = response.feed.results[i]
-                        albumListDet.add(AlbumListItem(feed.artistName, feed.name, feed.artworkUrl100, feed.url))
+                        albumListDet.add(AlbumListItem(feed.artistName, feed.name, feed.artworkUrl100, feed.url, feed.contentAdvisoryRating, feed.copyright))
                         recyclerView.adapter?.notifyDataSetChanged()
                         binding.progressBar.visibility = View.GONE
                     }

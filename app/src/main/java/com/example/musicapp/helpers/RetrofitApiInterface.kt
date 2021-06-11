@@ -1,5 +1,6 @@
-package com.example.musicapp
+package com.example.musicapp.helpers
 
+import com.example.musicapp.FeedResponse
 import retrofit2.http.GET
 
 const val BASE_URL= "https://rss.itunes.apple.com"

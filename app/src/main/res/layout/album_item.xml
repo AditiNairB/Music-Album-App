@@ -2,7 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/gray"
+    app:cardCornerRadius="16dp"
+    android:elevation="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -10,16 +14,15 @@
 
         <ImageView
             android:id="@+id/album_art"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/album_art"
-            android:src="@color/black"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="10dp"></ImageView>
+            android:background="@drawable/album_art_frame"
+            android:padding="6dp"/>
 
         <TextView
             android:id="@+id/album_name"
@@ -27,20 +30,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/album_art"
-            android:layout_toRightOf="@+id/album_art"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"></TextView>
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="end"/>
 
         <TextView
             android:id="@+id/artist_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/album_name"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/album_art"
-            android:layout_toRightOf="@id/album_art"
-            android:textSize="12sp"></TextView>
+            android:textSize="17sp"/>
 
     </RelativeLayout>
 

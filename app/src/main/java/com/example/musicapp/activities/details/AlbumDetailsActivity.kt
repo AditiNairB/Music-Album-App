@@ -1,9 +1,11 @@
-package com.example.musicapp
+package com.example.musicapp.activities.details
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.musicapp.AlbumListItem
 import com.example.musicapp.databinding.ActivityAlbumDetailsBinding
 import com.squareup.picasso.Picasso
 
@@ -20,7 +22,8 @@ class AlbumDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Set album details to new activity
-        val albumDet:AlbumListItem = intent.getSerializableExtra("det") as AlbumListItem
+        val albumDet: AlbumListItem = intent.getSerializableExtra("det") as AlbumListItem
+        Picasso.get().load(albumDet.artworkUrl100).into(binding.albumArtDet)
         binding.albumNameDet.text = albumDet.name
         binding.artistNameDet.text = albumDet.artistName
         binding.streamUrl.setOnClickListener{
@@ -28,7 +31,10 @@ class AlbumDetailsActivity : AppCompatActivity() {
             i.data = Uri.parse(albumDet.url)
             startActivity(i)
         }
-        Picasso.get().load(albumDet.artworkUrl100).into(binding.albumArtDet)
+        if(null == albumDet.contentAdvisoryRating){
+            binding.explicitLogo.visibility = View.GONE
+        }
+        binding.tvCopyright.text = albumDet.copyright
 
         //set back button functionality
         val actionBar = supportActionBar
@@ -37,6 +43,7 @@ class AlbumDetailsActivity : AppCompatActivity() {
 
     }
 
+    //back button function
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         finish()

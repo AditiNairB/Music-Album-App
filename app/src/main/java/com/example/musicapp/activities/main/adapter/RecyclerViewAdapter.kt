@@ -2,7 +2,6 @@ package com.example.musicapp
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicapp.databinding.AlbumItemBinding
@@ -21,14 +20,13 @@ class RecyclerViewAdapter(val albumList: ArrayList<AlbumListItem>, var clickList
         val currentAlbum = albumList[position]
         holder.binding.albumName.text = currentAlbum.name
         holder.binding.artistName.text = currentAlbum.artistName
-        Picasso.get().load(currentAlbum.artworkUrl100).into(holder.binding.albumArt)
-
+        Picasso.get().load(currentAlbum.artworkUrl100).resize(60,60).into(holder.binding.albumArt)
         holder.binding.root.setOnClickListener{
             Log.d("MAIN", "Clicked")
             clickListener.onItemClick(currentAlbum, position)
         }
-
     }
+
     override fun getItemCount(): Int {
         return albumList.size
     }
