@@ -86,4 +86,19 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"/>
 
+    <ToggleButton
+        android:id="@+id/toggleButtonDetails"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/fav_checked"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="25dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintEnd_toStartOf="@+id/album_name_det"
+        app:layout_constraintTop_toBottomOf="@+id/album_art_det" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.musicapp.activities.main
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
@@ -9,14 +10,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.musicapp.*
 import com.example.musicapp.activities.details.AlbumDetailsActivity
+import com.example.musicapp.databinding.ActivityAlbumDetailsBinding
 import com.example.musicapp.databinding.ActivityMainBinding
 import com.example.musicapp.helpers.BASE_URL
 import com.example.musicapp.helpers.RetrofitInterface
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -33,6 +37,8 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     //View Binding
     private lateinit var binding: ActivityMainBinding
 
+    @DelicateCoroutinesApi
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -54,6 +60,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         }
     }
 
+    @DelicateCoroutinesApi
     private fun getAlbumData() {
 
         //Retrofit API to set api
@@ -68,15 +75,13 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
             try{
                 val response = api.getAlbumDetails()
 
-                if(null != response){
                     Log.d("MAIN", "${response.feed.results.size}")
                     for(i in response.feed.results.indices){
-                        var feed = response.feed.results[i]
-                        albumListDet.add(AlbumListItem(feed.artistName, feed.name, feed.artworkUrl100, feed.url, feed.contentAdvisoryRating, feed.copyright))
+                        val feed = response.feed.results[i]
+                        albumListDet.add(AlbumListItem(feed.artistName, feed.name, feed.artworkUrl100, feed.url, feed.contentAdvisoryRating, feed.copyright, 0))
                         recyclerView.adapter?.notifyDataSetChanged()
                         binding.progressBar.visibility = View.GONE
                     }
-                }
 
             }catch (e: Exception){
                 Log.e("Main", "Error ${e.message}")
@@ -95,10 +100,10 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     //Check if there is internet connection
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun isConnected(): Boolean {
         val connectivityManager =
             getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val networkInfo = connectivityManager.activeNetwork
             if (networkInfo != null) {
                 val nc = connectivityManager.getNetworkCapabilities(networkInfo)
@@ -106,9 +111,5 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                 return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
             }
             return false
-        } else {
-            val netInfo = connectivityManager.activeNetworkInfo
-            return netInfo != null && netInfo.isConnectedOrConnecting
-        }
     }
 }

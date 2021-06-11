@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="5dp"
+    android:layout_margin="3dp"
     app:cardBackgroundColor="@color/gray"
     app:cardCornerRadius="16dp"
     android:elevation="10dp">
@@ -44,6 +44,20 @@
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/album_art"
             android:textSize="17sp"/>
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/album_name"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/fav_checked"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:textOff=""
+            android:textOn="" />
 
     </RelativeLayout>
 

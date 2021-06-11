@@ -25,6 +25,14 @@ class RecyclerViewAdapter(val albumList: ArrayList<AlbumListItem>, var clickList
             Log.d("MAIN", "Clicked")
             clickListener.onItemClick(currentAlbum, position)
         }
+
+        holder.binding.toggleButton.setOnClickListener{
+            if(albumList[position].favourite == 0){
+                albumList[position].favourite = 1
+            }else{
+                albumList[position].favourite = 0
+            }
+        }
     }
 
     override fun getItemCount(): Int {
